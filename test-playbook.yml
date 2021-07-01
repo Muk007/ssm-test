@@ -1,5 +1,10 @@
 ---
 - hosts: all
   tasks:
-  - name: run command
-    shell: "mkdir /tmp/ssm-test"
+  - name: create dir
+    shell: "ls /tmp"
+    register: out
+
+  - debug:
+      msg: "List command succeeded."
+    when: out.rc == 0
